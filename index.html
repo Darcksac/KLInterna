@@ -5,32 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Torneo de Fútbol Universitario</title>
     <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link href="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/css/ionicons.min.css" rel="stylesheet">
     <style>
         /* Estilos para el navbar */
         nav {
-            background-color: #333;
+            background-color: #000000;
             overflow: hidden;
+            width: 5em;
+            height: 100vh;
+            position: fixed;
+            transition: width .35s cubic-bezier(0.175, 0.685, 0.32, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 10px; /* Añadimos un pequeño padding superior */
+        }
+
+        body {
+            background-color: #848484;
+        }
+
+        nav:hover {
+            width: 16em;
         }
 
         nav a {
-            float: left;
             display: block;
-            color: white;
+            color: rgb(197, 184, 184);
             text-align: center;
-            padding: 14px 20px;
+            padding: 14px;
             text-decoration: none;
         }
 
         nav a:hover {
-            background-color: #ddd;
+            background-color: #ac9999;
             color: black;
         }
 
         nav a.active {
             background-color: #e60c0c;
-            color: white;
+            color: rgb(212, 158, 158);
+        }
+
+        /* Estilos para el logo */
+        .logo {
+            width: 80%;  /* Ajustamos el tamaño del logo */
+            margin-bottom: 20px;  /* Añadimos espacio debajo del logo */
         }
 
         /* Estilos para el banner */
@@ -41,15 +61,6 @@
             background-image: url('imgs/ban.avif'); /* Cambia 'banner.jpg' por la imagen del banner */
             background-size: cover;
             background-position: center;
-        }
-
-        /* Estilo para el logo */
-        .logo {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 200px; /* Tamaño del logo */
         }
 
         /* Resto de los estilos */
@@ -65,7 +76,7 @@
         }
 
         table, th, td {
-            border: 1px solid #ddd;
+            border: 1px solid #000000;
         }
 
         th, td {
@@ -74,29 +85,92 @@
         }
 
         th {
-            background-color: #f4f4f4;
+            background-color: #000000;
+        }
+
+        /* Main Content */
+        #main {
+            margin-left: 5em;
+            padding: 20px;
         }
     </style>
 </head>
 <body>
     <!-- Navbar -->
-    <nav>
-        <a href="index.html" class="active">Inicio</a>
-        <a href="Tablageneral.html">Tablas Generales</a>
-        <a href="Tabladegoleo.html">Tabla de Goleo</a>
-        <a href="Partidospasados.html">Partidos Pasados</a>
-        <a href="Proximospartidos.html">Partidos Programados</a>
+    <nav id="navbar">
+        <ul class="navbar-items flexbox-col">
+            <!-- Logo -->
+            <li class="navbar-logo flexbox-left">
+                <a class="navbar-item-inner flexbox">
+                    <img src="imgs/logo.png" alt="Logo del Torneo" class="logo"> <!-- Logo de imagen PNG -->
+                </a>
+            </li>
+            
+            <!-- Navbar Items -->
+             <li class="navbar-item flexbox-left">
+                <a class="navbar-item-inner flexbox-left" href="index.html">
+                    <div class="navbar-item-inner-icon-wrapper flexbox">
+                        <ion-icon name="home-outline"></ion-icon>
+                    </div>
+                    <span class="link-text">Inicio</span>
+                </a>
+            </li>
+            
+            <li class="navbar-item flexbox-left">
+                <a class="navbar-item-inner flexbox-left" href="tablageneral.html">
+                    <div class="navbar-item-inner-icon-wrapper flexbox">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </div>
+                    <span class="link-text">Tabla General</span>
+                </a>
+            </li>
+            <li class="navbar-item flexbox-left">
+                <a class="navbar-item-inner flexbox-left" href="tabladegoleo.html">
+                    <div class="navbar-item-inner-icon-wrapper flexbox">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </div>
+                    <span class="link-text">Tabla Goleo</span>
+                </a>
+            </li>
+            <li class="navbar-item flexbox-left">
+                <a class="navbar-item-inner flexbox-left" href="Proximospartidos.html">
+                    <div class="navbar-item-inner-icon-wrapper flexbox">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </div>
+                    <span class="link-text">Partidos por jugar</span>
+                </a>
+            </li>
+            <li class="navbar-item flexbox-left">
+                <a class="navbar-item-inner flexbox-left" href="Partidospasados.html">
+                    <div class="navbar-item-inner-icon-wrapper flexbox">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </div>
+                    <span class="link-text">Partidos jugados</span>
+                </a>
+            </li>
+        </ul>
     </nav>
 
-    <!-- Banner -->
-    <div class="banner">
-        <img src="imgs/logo.png" alt="Logo del Torneo" class="logo"> <!-- Logo encima del banner -->
-    </div>
+    <!-- Main Content -->
+    <main id="main" class="flexbox-col">
+        <h2>KLUTJ</h2>
+        <p>¡Bienvenidos al portal de estadísticas del Torneo Universitario de Fútbol 2025! ⚽
 
+            Aquí podrás consultar el desempeño de tu equipo y de los demás, ver resultados en tiempo real, estadísticas individuales y de grupo, y seguir todo lo que sucede en el torneo. ¡Mantén el enfoque, sigue la evolución de tus partidos y prepárate para lo que viene!
+            
+            ¡Sigue demostrando el talento y la pasión que nos ha traído hasta aquí! ¡Vamos equipo! 💪🔥</p>
+    </main>
+
+    <!-- Banner -->
 
     <script>
-        // Aquí puedes agregar funciones de JavaScript si es necesario para editar los datos directamente
+        // Agregar funcionalidad JavaScript para resaltar los elementos activos
+        document.querySelectorAll('nav a').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
+                item.classList.add('active');
+            });
+        });
     </script>
 </body>
 </html>
-
