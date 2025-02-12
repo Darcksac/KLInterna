@@ -5,51 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Torneo de Fútbol Universitario</title>
     <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link href="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/css/ionicons.min.css" rel="stylesheet">
     <style>
         /* Estilos para el navbar */
         nav {
-            background-color: #333;
+            background-color: #000000;
             overflow: hidden;
+            width: 5em;
+            height: 100vh;
+            position: fixed;
+            transition: width .35s cubic-bezier(0.175, 0.685, 0.32, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 10px;
+        }
+
+        body {
+            background-color: #848484;
+        }
+
+        nav:hover {
+            width: 16em;
         }
 
         nav a {
-            float: left;
             display: block;
-            color: white;
+            color: rgb(197, 184, 184);
             text-align: center;
-            padding: 14px 20px;
+            padding: 14px;
             text-decoration: none;
         }
 
         nav a:hover {
-            background-color: #ddd;
+            background-color: #ac9999;
             color: black;
         }
 
         nav a.active {
-            background-color: #26ac8a;
-            color: white;
+            background-color: #e60c0c;
+            color: rgb(212, 158, 158);
+        }
+
+        /* Estilos para el logo */
+        .logo {
+            width: 80%;
+            margin-bottom: 20px;
         }
 
         /* Estilos para el banner */
         .banner {
             position: relative;
             width: 100%;
-            height: 250px; /* Altura del banner */
-            background-image: url('imgs/ban.avif'); /* Cambia 'banner.jpg' por la imagen del banner */
+            height: 250px;
+            background-image: url('imgs/ban.avif');
             background-size: cover;
             background-position: center;
-        }
-
-        /* Estilo para el logo */
-        .logo {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 200px; /* Tamaño del logo */
         }
 
         /* Resto de los estilos */
@@ -58,110 +69,268 @@
             text-align: center;
         }
 
-        table {
-            width: 100%;
-            margin: 20px 0;
-            border-collapse: collapse;
+        .partido-card {
+            display: flex;
+            justify-content: space-between;
+            background-color: #ffffff;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        table, th, td {
-            border: 1px solid #ddd;
+        .partido-card img {
+            width: 40px;
+            height: auto;
         }
 
-        th, td {
-            padding: 8px 12px;
+        .partido-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             text-align: center;
         }
 
-        th {
-            background-color: #f4f4f4;
+        .partido-info h4 {
+            margin: 5px 0;
+        }
+
+        .partido-info span {
+            font-size: 12px;
+            color: gray;
+        }
+
+        /* Main Content */
+        #main {
+            margin-left: 5em;
+            padding: 20px;
+        }
+
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* Estilos responsivos */
+        @media (max-width: 768px) {
+            nav a {
+                padding: 10px;
+            }
+
+            .logo {
+                width: 150px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav a {
+                padding: 8px;
+                font-size: 12px;
+            }
+
+            h2 {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Navbar -->
-    <nav>
-        <a href="index.html">Inicio</a>
-        <a href="Tablageneral.html">Tablas Generales</a>
-        <a href="Tabladegoleo.html" class="active" >Tabla de Goleo</a>
-        <a href="Partidospasados.html">Partidos Pasados</a>
-        <a href="Proximospartidos.html">Partidos Programados</a>
+    <nav id="navbar">
+        <ul class="navbar-items flexbox-col">
+            <!-- Logo -->
+            <li class="navbar-logo flexbox-left">
+                <a class="navbar-item-inner flexbox">
+                    <img src="imgs/logo.png" alt="Logo del Torneo" class="logo">
+                </a>
+            </li>
+
+            <!-- Navbar Items -->
+            <li class="navbar-item flexbox-left">
+                <a class="navbar-item-inner flexbox-left" href="index.html">
+                    <div class="navbar-item-inner-icon-wrapper flexbox">
+                        <ion-icon name="home-outline"></ion-icon>
+                    </div>
+                    <span class="link-text">Inicio</span>
+                </a>
+            </li>
+
+            <li class="navbar-item flexbox-left">
+                <a class="navbar-item-inner flexbox-left" href="Tablageneral.html">
+                    <div class="navbar-item-inner-icon-wrapper flexbox">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </div>
+                    <span class="link-text">Tabla General</span>
+                </a>
+            </li>
+            <li class="navbar-item flexbox-left">
+                <a class="navbar-item-inner flexbox-left" href="Tabladegoleo.html">
+                    <div class="navbar-item-inner-icon-wrapper flexbox">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </div>
+                    <span class="link-text">Tabla Goleo</span>
+                </a>
+            </li>
+            <li class="navbar-item flexbox-left">
+                <a class="navbar-item-inner flexbox-left" href="Proximospartidos.html">
+                    <div class="navbar-item-inner-icon-wrapper flexbox">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </div>
+                    <span class="link-text">Partidos por jugar</span>
+                </a>
+            </li>
+            <li class="navbar-item flexbox-left">
+                <a class="navbar-item-inner flexbox-left" href="Partidospasados.html">
+                    <div class="navbar-item-inner-icon-wrapper flexbox">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </div>
+                    <span class="link-text">Partidos jugados</span>
+                </a>
+            </li>
+        </ul>
     </nav>
 
-    <!-- Banner -->
-    <div class="banner">
-        <img src="imgs/logo.png" alt="Logo del Torneo" class="logo"> <!-- Logo encima del banner -->
-    </div>
-<h2>Tabla de Goleadores</h2>
-        <table id="tablaGoleadores">
-            <thead>
-                <tr>
-                    <th>Posición</th>
-                    <th>Jugador</th>
-                    <th>Equipo</th>
-                    <th>Goles</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>EMMANUEL MARMOLEJO</td>
-                    <td><img src="imgs/ifc.png" alt="Escudo Inges" width="40"></td>
-                    <td>10</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>MANUEL MENDIOLA</td>
-                    <td><img src="imgs/lob.png" alt="Escudo Inges" width="40"></td>
-                    <td>7</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>ISAAC SANCHEZ</td>
-                    <td><img src="imgs/ifc.png" alt="Escudo Inges" width="40"></td>
-                    <td>7</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>JUAN PABLO</td>
-                    <td><img src="imgs/pab.png" alt="Escudo Inges" width="40"></td>
-                    <td>6</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>CAMILO BERNAL</td>
-                    <td><img src="imgs/ifc.png" alt="Escudo Inges" width="40"></td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>JONATHAN MUNOZ</td>
-                    <td><img src="imgs/cap.png" alt="Escudo Inges" width="40"></td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>EDGAR DIAZ</td>
-                    <td><img src="imgs/bar.png" alt="Escudo Inges" width="40"></td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td>YAREMI BERNAL</td>
-                    <td><img src="imgs/ign.png" alt="Escudo Inges" width="40"></td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td>IGNACIO DIAZ</td>
-                    <td><img src="imgs/vjr.png" alt="Escudo Inges" width="40"></td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td>IVAN ALCALA</td>
-                    <td><img src="imgs/vjr.png" alt="Escudo Tecolotes" width="40"></td>
-                    <td>4</td>
-                </tr>
-            </tbody>
-        </table>
+    <!-- Contenido principal -->
+    <main id="main" class="flexbox-col">
+        <h2>Tabla de Goleadores</h2>
+
+        <div class="card-container">
+            <!-- Card 1 -->
+            <div class="partido-card">
+                <div class="goleador-card">
+                    <img src="imgs/ifc.png" alt="Escudo Inges">
+                    <div class="goleador-info">
+                        <h4>EMMANUEL MARMOLEJO</h4>
+                        <p>Equipo: Inges FC</p>
+                        <p>Goles: 10</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="partido-card">
+                <div class="goleador-card">
+                    <img src="imgs/lob.png" alt="Escudo Lobos">
+                    <div class="goleador-info">
+                        <h4>MANUEL MENDIOLA</h4>
+                        <p>Equipo: Lobos</p>
+                        <p>Goles: 7</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="partido-card">
+                <div class="goleador-card">
+                    <img src="imgs/ifc.png" alt="Escudo Inges">
+                    <div class="goleador-info">
+                        <h4>ISAAC SANCHEZ</h4>
+                        <p>Equipo: Inges FC</p>
+                        <p>Goles: 7</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="partido-card">
+                <div class="goleador-card">
+                    <img src="imgs/pab.png" alt="Escudo Pablos">
+                    <div class="goleador-info">
+                        <h4>JUAN PABLO</h4>
+                        <p>Equipo: Pablos</p>
+                        <p>Goles: 6</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="partido-card">
+                <div class="goleador-card">
+                    <img src="imgs/ifc.png" alt="Escudo Inges">
+                    <div class="goleador-info">
+                        <h4>CAMILO BERNAL</h4>
+                        <p>Equipo: Inges FC</p>
+                        <p>Goles: 5</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="partido-card">
+                <div class="goleador-card">
+                    <img src="imgs/bar.png" alt="Escudo Barcelona">
+                    <div class="goleador-info">
+                        <h4>EDGAR DIAZ</h4>
+                        <p>Equipo: Barcelona</p>
+                        <p>Goles: 4</p>
+                    </div>
+                </div>
+            </div>
+<div class="partido-card">
+                <div class="goleador-card">
+                    <img src="imgs/cap.png" alt="Escudo Caprichos">
+                    <div class="goleador-info">
+                        <h4>JONATHAN MUNOZ</h4>
+                        <p>Equipo: Caprichos</p>
+                        <p>Goles: 5</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 7 -->
+            <div class="partido-card">
+                <div class="goleador-card">
+                    <img src="imgs/ign.png" alt="Escudo Ignis">
+                    <div class="goleador-info">
+                        <h4>YAREMI BERNAL</h4>
+                        <p>Equipo: Ignis</p>
+                        <p>Goles: 4</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 8 -->
+            
+
+            <!-- Card 9 -->
+            <div class="partido-card">
+                <div class="goleador-card">
+                    <img src="imgs/vjr.png" alt="Escudo VJR">
+                    <div class="goleador-info">
+                        <h4>IGNACIO DIAZ</h4>
+                        <p>Equipo: VJR</p>
+                        <p>Goles: 4</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 10 -->
+            <div class="partido-card">
+                <div class="goleador-card">
+                    <img src="imgs/vjr.png" alt="Escudo VJR">
+                    <div class="goleador-info">
+                        <h4>IVAN ALCALA</h4>
+                        <p>Equipo: VJR</p>
+                        <p>Goles: 4</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Funcionalidad JavaScript para resaltar los elementos activos
+        document.querySelectorAll('nav a').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
+                item.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
