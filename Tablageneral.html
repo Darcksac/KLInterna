@@ -5,51 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Torneo de Fútbol Universitario</title>
     <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link href="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/css/ionicons.min.css" rel="stylesheet">
     <style>
         /* Estilos para el navbar */
         nav {
-            background-color: #333;
+            background-color: #000000;
             overflow: hidden;
+            width: 5em;
+            height: 100vh;
+            position: fixed;
+            transition: width .35s cubic-bezier(0.175, 0.685, 0.32, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 10px;
+        }
+
+        body {
+            background-color: #848484;
+        }
+
+        nav:hover {
+            width: 16em;
         }
 
         nav a {
-            float: left;
             display: block;
-            color: white;
+            color: rgb(197, 184, 184);
             text-align: center;
-            padding: 14px 20px;
+            padding: 14px;
             text-decoration: none;
         }
 
         nav a:hover {
-            background-color: #ddd;
+            background-color: #ac9999;
             color: black;
         }
 
         nav a.active {
-            background-color: #e6b30c;
-            color: white;
+            background-color: #e60c0c;
+            color: rgb(212, 158, 158);
+        }
+
+        /* Estilos para el logo */
+        .logo {
+            width: 80%;
+            margin-bottom: 20px;
         }
 
         /* Estilos para el banner */
         .banner {
             position: relative;
             width: 100%;
-            height: 250px; /* Altura del banner */
-            background-image: url('imgs/ban.avif'); /* Cambia 'banner.jpg' por la imagen del banner */
+            height: 250px;
+            background-image: url('imgs/ban.avif');
             background-size: cover;
             background-position: center;
-        }
-
-        /* Estilo para el logo */
-        .logo {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 200px; /* Tamaño del logo */
         }
 
         /* Resto de los estilos */
@@ -58,241 +69,297 @@
             text-align: center;
         }
 
-        table {
-            width: 100%;
-            margin: 20px 0;
-            border-collapse: collapse;
+        /* Estilos para las cards de los equipos */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-left: 220px; /* Para que no se sobrepongan al navbar */
+            margin-top: 20px;
         }
 
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-
-        th, td {
-            padding: 8px 12px;
+        .team-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            padding: 15px;
             text-align: center;
         }
 
-        th {
-            background-color: #f4f4f4;
+        .team-card img {
+            width: 100px;
+            height: auto;
+        }
+
+        .team-card h4 {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        .team-card p {
+            font-size: 14px;
+            color: gray;
+        }
+
+        .team-card .stats {
+            margin-top: 15px;
+        }
+
+        .stats div {
+            margin-bottom: 5px;
+        }
+
+        .team-card .pts {
+            font-size: 30px;
+            font-weight: bold;
+            color: #e60c0c;
+            margin-top: 10px;
+        }
+
+        .team-card .other-stats {
+            font-size: 12px;
+            color: gray;
+        }
+
+        /* Estilos responsivos */
+        @media (max-width: 768px) {
+            nav a {
+                padding: 10px;
+            }
+
+            .logo {
+                width: 150px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            .card-container {
+                margin-left: 0;
+            }
+
+            .team-card {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Navbar -->
-    <nav>
-        <a href="index.html">Inicio</a>
-        <a href="Tablageneral.html" class="active" >Tablas Generales</a>
-        <a href="Tabladegoleo.html">Tabla de Goleo</a>
-        <a href="Partidospasados.html">Partidos Pasados</a>
-        <a href="Proximospartidos.html">Partidos Programados</a>
+    <nav id="navbar">
+        <ul class="navbar-items flexbox-col">
+            <!-- Logo -->
+            <li class="navbar-logo flexbox-left">
+                <a class="navbar-item-inner flexbox">
+                    <img src="imgs/logo.png" alt="Logo del Torneo" class="logo">
+                </a>
+            </li>
+
+            <!-- Navbar Items -->
+            <li class="navbar-item flexbox-left">
+                <a class="navbar-item-inner flexbox-left" href="index.html">
+                    <div class="navbar-item-inner-icon-wrapper flexbox">
+                        <ion-icon name="home-outline"></ion-icon>
+                    </div>
+                    <span class="link-text">Inicio</span>
+                </a>
+            </li>
+
+            <li class="navbar-item flexbox-left">
+                <a class="navbar-item-inner flexbox-left" href="Tablageneral.html">
+                    <div class="navbar-item-inner-icon-wrapper flexbox">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </div>
+                    <span class="link-text">Tabla General</span>
+                </a>
+            </li>
+            <li class="navbar-item flexbox-left">
+                <a class="navbar-item-inner flexbox-left" href="Tabladegoleo.html">
+                    <div class="navbar-item-inner-icon-wrapper flexbox">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </div>
+                    <span class="link-text">Tabla Goleo</span>
+                </a>
+            </li>
+            <li class="navbar-item flexbox-left">
+                <a class="navbar-item-inner flexbox-left" href="Proximospartidos.html">
+                    <div class="navbar-item-inner-icon-wrapper flexbox">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </div>
+                    <span class="link-text">Partidos por jugar</span>
+                </a>
+            </li>
+            <li class="navbar-item flexbox-left">
+                <a class="navbar-item-inner flexbox-left" href="Partidospasados.html">
+                    <div class="navbar-item-inner-icon-wrapper flexbox">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </div>
+                    <span class="link-text">Partidos jugados</span>
+                </a>
+            </li>
+        </ul>
     </nav>
 
-    <!-- Banner -->
-    <div class="banner">
-        <img src="imgs/logo.png" alt="Logo del Torneo" class="logo"> <!-- Logo encima del banner -->
-    </div>
-        
-        
+    <!-- Contenido principal -->
+    <main id="main" class="flexbox-col">
         <h2>Grupo A</h2>
-        <table id="tablaPuntos">
-            <thead>
-                <tr> 
-                    <th>Posición</th>
-                    <th>Escudo</th> 
-                    <th>Equipo</th>
-                    <th>J.J.</th>
-                    <th>J.G.</th>
-                    <th>J.E.</th>
-                    <th>J.P.</th>
-                    <th>G.F.</th>
-                    <th>G.C.</th>
-                    <th>DIF.</th>
-                    <th>PTS.</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td><img src="imgs/ifc.png" alt="Escudo INGES FC"></td> <!-- Escudo -->
-                    <td>INGES FC</td>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>28</td>
-                    <td>7</td>
-                    <td>21</td>
-                    <td>6</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td><img src="imgs/bar.png" alt="Escudo Barcelona FC"></td> <!-- Escudo -->
-                    <td>BARCELONA FC</td>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>12</td>
-                    <td>2</td>
-                    <td>10</td>
-                    <td>6</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td><img src="imgs/tec.png" alt="Escudo Lobo Domesticado"></td> <!-- Escudo -->
-                    <td>TECOLOTES</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>1</td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>5</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td><img src="imgs/lob.png" alt="Escudo Necaxa" width="100" height="100"></td>
-                    <td>LOBOS DOMESTICADOS</td>
-                    <td>2</td>
-                    <td>0</td>
-                    <td>1</td>
-                    <td>9</td>
-                    <td>0</td>
-                    <td>17</td>
-                    <td>-8</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td><img src="imgs/nec.png" alt="Escudo España"></td> <!-- Escudo -->
-                    <td>NECAXA</td>
-                    <td>2</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>0</td>
-                    <td>8</td>
-                    <td>-8</td>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td><img src="imgs/esp.png" alt="Escudo Tecolotes Nav."></td> <!-- Escudo -->
-                    <td>ESPAÑA</td>
-                    <td>2</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>12</td>
-                    <td>-10</td>
-                    <td>0</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="card-container">
+            <!-- Tarjeta 1 -->
+            <div class="team-card">
+                <img src="imgs/ifc.png" alt="Escudo INGES FC">
+                <h4>INGES FC</h4>
+                <div class="pts">6</div>
+                <div class="other-stats">
+                    <p>JJ: 2 | JG: 2 | JE: 0 | JP: 0</p>
+                    <div>GF: 28</div>
+                    <div>GC: 7</div>
+                    <div>DIF: +21</div>
+                </div>
+            </div>
+            <!-- Tarjeta 2 -->
+            <div class="team-card">
+                <img src="imgs/bar.png" alt="Escudo Barcelona FC">
+                <h4>BARCELONA FC</h4>
+                <div class="pts">6</div>
+                <div class="other-stats">
+                    <p>JJ: 2 | JG: 2 | JE: 0 | JP: 0</p>
+                    <div>GF: 12</div>
+                    <div>GC: 2</div>
+                    <div>DIF: +10</div>
+                </div>
+            </div>
+            <!-- Tarjeta 3 -->
+            <div class="team-card">
+                <img src="imgs/tec.png" alt="Escudo TECOLOTES">
+                <h4>TECOLOTES</h4>
+                <div class="pts">3</div>
+                <div class="other-stats">
+                    <p>JJ: 2 | JG: 1 | JE: 0 | JP: 1</p>
+                    <div>GF: 5</div>
+                    <div>GC: 0</div>
+                    <div>DIF: +5</div>
+                </div>
+            </div>
+            <!-- Tarjeta 4 -->
+            <div class="team-card">
+                <img src="imgs/lob.png" alt="Escudo LOBOS DOMESTICADOS">
+                <h4>LOBOS DOMESTICADOS</h4>
+                <div class="pts">3</div>
+                <div class="other-stats">
+                    <p>JJ: 2 | JG: 1 | JE: 0 | JP: 1</p>
+                    <div>GF: 9</div>
+                    <div>GC: 17</div>
+                    <div>DIF: -8</div>
+                </div>
+            </div>
+            <!-- Tarjeta 5 -->
+            <div class="team-card">
+                <img src="imgs/nec.png" alt="Escudo Kaprichos">
+                <h4>NECAXA</h4>
+                <div class="pts">0</div>
+                <div class="other-stats">
+                    <p>JJ: 2 | JG: 0 | JE: 0 | JP: 2</p>
+                    <div>GF: 0</div>
+                    <div>GC: 8</div>
+                    <div>DIF: +8</div>
+                </div>
+            </div>
+            <!-- Tarjeta 6 -->
+            <div class="team-card">
+                <img src="imgs/esp.png" alt="Escudo MECAS FC">
+                <h4>ESPAÑA</h4>
+                <div class="pts">0</div>
+                <div class="other-stats">
+                    <p>JJ: 2 | JG: 0 | JE: 0 | JP: 2</p>
+                    <div>GF: 2</div>
+                    <div>GC: 12</div>
+                    <div>DIF: +10</div>
+                </div>
+            </div>
+        </div>
 
-        <h2>Grupo B</h2>
-        <table id="tablaPuntos">
-            <thead>
-                <tr> 
-                    <th>Posición</th>
-                    <th>Escudo</th> 
-                    <th>Equipo</th>
-                    <th>J.J.</th>
-                    <th>J.G.</th>
-                    <th>J.E.</th>
-                    <th>J.P.</th>
-                    <th>G.F.</th>
-                    <th>G.C.</th>
-                    <th>DIF.</th>
-                    <th>PTS.</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td><img src="imgs/cap.png" alt="Escudo Vodka Juniors" width="40"></td> <!-- Escudo -->
-                    <td>KAPRICHOS</td>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>14</td>
-                    <td>7</td>
-                    <td>7</td>
-                    <td>6</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td><img src="imgs/ign.png" alt="Escudo Los Pablos" width="40"></td> <!-- Escudo -->
-                    <td>IGUANORANGERS</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>1</td>
-                    <td>15</td>
-                    <td>10</td>
-                    <td>5</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td><img src="imgs/jest.png" alt="Escudo Kaprichos FC" width="40"></td> <!-- Escudo -->
-                    <td>JETS FC</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>1</td>
-                    <td>12</td>
-                    <td>8</td>
-                    <td>4</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td><img src="imgs/vjr.png" alt="Escudo Jets FC" width="40"></td> <!-- Escudo -->
-                    <td>VODKA JR</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>1</td>
-                    <td>14</td>
-                    <td>13</td>
-                    <td>1</td>
-                    <td>3</td>
-                </tr>
+        <!-- Grupo B -->
+            <h2>Grupo B</h2>
+            <div class="card-container">
+                <!-- Tarjeta 1 -->
+                <div class="team-card">
+                    <img src="imgs/cap.png" alt="Escudo Kaprichos">
+                    <h4>KAPRICHOS</h4>
+                    <div class="pts">6</div>
+                    <div class="other-stats">
+                        <p>JJ: 2 | JG: 2 | JE: 0 | JP: 0</p>
+                        <div>GF: 14</div>
+                        <div>GC: 7</div>
+                        <div>DIF: +7</div>
+                    </div>
+                </div>
+                <!-- Tarjeta 2 -->
+                <div class="team-card">
+                    <img src="imgs/ign.png" alt="Escudo Iguanorangers">
+                    <h4>IGUANORANGERS</h4>
+                    <div class="pts">3</div>
+                    <div class="other-stats">
+                        <p>JJ: 2 | JG: 1 | JE: 0 | JP: 1</p>
+                        <div>GF: 15</div>
+                        <div>GC: 10</div>
+                        <div>DIF: +5</div>
+                    </div>
+                </div>
+                <!-- Tarjeta 3 -->
+                <div class="team-card">
+                    <img src="imgs/jest.png" alt="Escudo Jets FC">
+                    <h4>JETS FC</h4>
+                    <div class="pts">3</div>
+                    <div class="other-stats">
+                        <p>JJ: 2 | JG: 1 | JE: 0 | JP: 1</p>
+                        <div>GF: 12</div>
+                        <div>GC: 8</div>
+                        <div>DIF: +4</div>
+                    </div>
+                </div>
+                <!-- Tarjeta 4 -->
+                <div class="team-card">
+                    <img src="imgs/vjr.png" alt="Escudo Vodka Jr">
+                    <h4>VODKA JR</h4>
+                    <div class="pts">3</div>
+                    <div class="other-stats">
+                        <p>JJ: 2 | JG: 1 | JE: 0 | JP: 1</p>
+                        <div>GF: 14</div>
+                        <div>GC: 13</div>
+                        <div>DIF: +1</div>
+                    </div>
+                </div>
+                <!-- Tarjeta 5 -->
+                <div class="team-card">
+                    <img src="imgs/pab.png" alt="Escudo Los Pablos">
+                    <h4>LOS PABLOS</h4>
+                    <div class="pts">3</div>
+                    <div class="other-stats">
+                        <p>JJ: 2 | JG: 1 | JE: 0 | JP: 1</p>
+                        <div>GF: 12</div>
+                        <div>GC: 13</div>
+                        <div>DIF: -1</div>
+                    </div>
+                </div>
+                <!-- Tarjeta 6 -->
+                <div class="team-card">
+                    <img src="imgs/mec.png" alt="Escudo Mecas FC">
+                    <h4>MECAS FC</h4>
+                    <div class="pts">0</div>
+                    <div class="other-stats">
+                        <p>JJ: 2 | JG: 0 | JE: 0 | JP: 2</p>
+                        <div>GF: 6</div>
+                        <div>GC: 24</div>
+                        <div>DIF: -18</div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+</body>
+</html>
 
-                <tr>
-                    <td>5</td>
-                    <td><img src="imgs/pab.png" alt="Escudo Mecas FC" width="40"></td> <!-- Escudo -->
-                    <td>LOS PABLOS</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>1</td>
-                    <td>12</td>
-                    <td>13</td>
-                    <td>-1</td>
-                    <td>3</td>
-                </tr>
-                
-                <tr>
-                    <td>6</td>
-                    <td><img src="imgs/mec.png" alt="Escudo Iguanorangers" width="40"></td> <!-- Escudo -->
-                    <td>MECAS FC</td>
-                    <td>2</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>6</td>
-                    <td>24</td>
-                    <td>-18</td>
-                    <td>0</td>
-                </tr>
-            </tbody>
-        </table>
-    </body>
-    </html>
     
