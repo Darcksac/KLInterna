@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torneo de Fútbol Universitario</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/css/ionicons.min.css" rel="stylesheet">
+    <style>
+        /* Estilos para el navbar */
+        nav {
+            background-color: #000000;
+            overflow: hidden;
+            width: 5em;
+            height: 100vh;
+            position: fixed;
+            transition: width .35s cubic-bezier(0.175, 0.685, 0.32, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 10px;
+        }
+
+        body {
+            background-color: #848484;
+        }
+
+        nav:hover {
+            width: 16em;
+        }
+
+        nav a {
+            display: block;
+            color: rgb(197, 184, 184);
+            text-align: center;
+            padding: 14px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ac9999;
+            color: black;
+        }
+
+        nav a.active {
+            background-color: #e60c0c;
+            color: rgb(212, 158, 158);
+        }
+
+        /* Estilos para el logo */
+        .logo {
+            width: 80%;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos para el banner */
+        .banner {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            background-image: url('imgs/ban.avif');
+            background-size: cover;
+            background-position: center;
+        }
+
+        h2 {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        /* Main Content */
+        #main {
+            margin-left: 5em;
+            padding: 20px;
+        }
+
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* Sección de Noticias */
+        .noticia-card {
+            display: flex;
+            background-color: #ffffff;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            align-items: center;
+        }
+
+        .noticia-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            margin-right: 15px;
+        }
+
+        .noticia-info {
+            flex: 1;
+        }
+
+        .noticia-info h4 {
+            margin: 5px 0;
+        }
+
+        .noticia-info p {
+            font-size: 14px;
+            color: gray;
+            margin-bottom: 8px;
+        }
+
+        .noticia-info .leer-mas {
+            text-decoration: none;
+            color: #e60c0c;
+            font-weight: bold;
+        }
+
+        .noticia-info .leer-mas:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav id="navbar">
+        <ul class="navbar-items flexbox-col">
+            <li class="navbar-logo flexbox-left">
+                <a class="navbar-item-inner flexbox">
+                    <img src="imgs/logo.png" alt="Logo del Torneo" class="logo">
+                </a>
+            </li>
+
+            <li class="navbar-item flexbox-left">
+                <a class="navbar-item-inner flexbox-left" href="index.html">
+                    <ion-icon name="home-outline"></ion-icon>
+                    <span class="link-text">Inicio</span>
+                </a>
+            </li>
+
+            <li class="navbar-item flexbox-left">
+                <a class="navbar-item-inner flexbox-left" href="Tablageneral.html">
+                    <ion-icon name="search-outline"></ion-icon>
+                    <span class="link-text">Tabla General</span>
+                </a>
+            </li>
+            <li class="navbar-item flexbox-left">
+                <a class="navbar-item-inner flexbox-left" href="Tabladegoleo.html">
+                    <ion-icon name="search-outline"></ion-icon>
+                    <span class="link-text">Tabla Goleo</span>
+                </a>
+            </li>
+            <li class="navbar-item flexbox-left">
+                <a class="navbar-item-inner flexbox-left" href="Proximospartidos.html">
+                    <ion-icon name="search-outline"></ion-icon>
+                    <span class="link-text">Partidos por jugar</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main id="main" class="flexbox-col">
+        <h2>Últimas Noticias</h2>
+
+        <div class="card-container">
+            <!-- Noticia 1 -->
+            <div class="noticia-card">
+                <img src="imgs/Agrop.png" alt="Noticia 1">
+                <div class="noticia-info">
+                    <h4>Listos los primeros 4 de liguilla</h4>
+                    <p>El grupo A ya tiene a sus primeros invitados a la fiesta grande, INGES, TECOLOTES, BARCELONA Y LOBOS ya son equipos de liguilla, esto por la baja de Necaxa y España
+                    </p>
+                </div>
+            </div>
+
+            <!-- Noticia 2 -->
+            
+            <div class="noticia-card">
+                <img src="imgs/amistosoifc.png" alt="Noticia 2">
+                <div class="noticia-info">
+                    <h4>Amistoso entre INGES Y KAPRICHOS</h4>
+                    <p>Hoy se jugo un amistoso entre Inges y Kaprichos, dando como ganadores a inges con un marcador de 4-2, partido con sabor a liguilla</p>
+                </div>
+            </div>
+
+            <!-- Noticia 3 -->
+            <div class="noticia-card">
+                <img src="imgs/nec.png" alt="Noticia 3">
+                <div class="noticia-info">
+                    <h4>Equipo fuera de juego</h4>
+                    <p>El equipo de necaxa, proveniente de CCD abandona el torneo a falta de dos juegos</p>
+                </div>
+            </div>
+        </div>
+        <div class="noticia-card">
+                <img src="imgs/espteam.png" alt="Noticia 2">
+                <div class="noticia-info">
+                    <h4>Que siempre no...</h4>
+                    <p>España deja el torneo a medias, no se presentaron y decidieron dejar de luchar</p>
+                </div>
+            </div>
+    </main>
+
+    <script>
+        document.querySelectorAll('nav a').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
+                item.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
